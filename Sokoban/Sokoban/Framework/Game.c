@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Renderer.h"
 #include "Input.h"
+#include "Timer.h"
 
 bool Initialize()
 {
@@ -9,6 +10,8 @@ bool Initialize()
 	{
 		return false;
 	}
+
+	InitializeTimer();
 
 	return true;
 }
@@ -20,22 +23,7 @@ void processInput()
 
 void update()
 {
-	if (GetButton(KEYCODE_W))
-	{
-		SetKeyMessage(KEYCODE_W);
-	}
-	else if (GetButton(KEYCODE_D))
-	{
-		SetKeyMessage(KEYCODE_D);
-	}
-	else if (GetButton(KEYCODE_S))
-	{
-		SetKeyMessage(KEYCODE_S);
-	}
-	else if (GetButton(KEYCODE_A))
-	{
-		SetKeyMessage(KEYCODE_A);
-	}
+
 }
 
 void render()
@@ -47,6 +35,7 @@ int32_t Run()
 {
 	while (true)
 	{
+		UpdateTimer();
 		processInput();
 		update();
 		render();
